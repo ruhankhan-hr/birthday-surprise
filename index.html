@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Surprise</title>
+    <title>Birthday Surprise | Special One</title>
     <style>
+        /* Basic Styles */
         body {
-            margin: 0; padding: 0;
-            background-color: #0a0a0a; /* শুরুতে ডার্ক থিম */
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a; /* Initial Dark Theme */
             font-family: 'Poppins', sans-serif;
-            display: flex; justify-content: center; align-items: center;
-            height: 100vh; overflow: hidden;
-            transition: background 1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background 1.5s ease;
         }
 
-        /* Click Here Button Design */
+        /* 1. Click Here Button */
         #click-btn {
             background: transparent;
             color: #ff4d6d;
@@ -37,7 +42,7 @@
             box-shadow: 0 0 25px rgba(255, 77, 109, 0.6);
         }
 
-        /* Fingerprint Area (Click করার পর আসবে) */
+        /* 2. Fingerprint Scanning Area */
         #scan-area {
             display: none;
             text-align: center;
@@ -45,7 +50,8 @@
         }
 
         .fingerprint-icon {
-            width: 80px; height: 80px;
+            width: 80px;
+            height: 80px;
             fill: #ff4d6d;
             animation: pulse 1s infinite;
         }
@@ -56,28 +62,64 @@
             100% { transform: scale(1); opacity: 0.7; }
         }
 
-        /* Main Content */
+        .status-text {
+            color: #ff4d6d;
+            margin-top: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* 3. Main Birthday Content */
         #main-content {
             display: none;
-            z-index: 10; width: 85%; max-width: 350px;
-            background: white; padding: 25px;
-            border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 10;
+            width: 85%;
+            max-width: 350px;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             text-align: center;
             animation: popUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        @keyframes popUp { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        .main-img { width: 100%; border-radius: 15px; border: 3px solid #ff4d6d; margin-bottom: 15px; }
-        h1 { color: #ff4d6d; font-size: 24px; }
-        #wish-text { font-size: 18px; color: #333; font-weight: bold; }
-
-        /* Floating Hearts */
-        .heart-bg {
-            position: absolute; color: #ff4d6d;
-            font-size: 20px; animation: move 4s linear infinite;
-            z-index: 1; opacity: 0.6;
+        @keyframes popUp {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
+
+        .main-img {
+            width: 100%;
+            border-radius: 15px;
+            border: 3px solid #ff4d6d;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2);
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        #wish-text {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* 4. Floating Love Shapes (Hearts) */
+        .heart-bg {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: move 4s linear infinite;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
         @keyframes move {
             0% { transform: translateY(100vh) rotate(0deg); }
             100% { transform: translateY(-10vh) rotate(360deg); }
@@ -89,4 +131,77 @@
     <button id="click-btn" onclick="startProcess()">Click Here</button>
 
     <div id="scan-area">
-        <svg class="fingerprint-icon"
+        <svg class="fingerprint-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.67-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.56.24.13.33.43.21.67-.09.15-.24.24-.44.24zm3.04 3.03c-.11 0-.22-.03-.33-.1-.08-.05-3.32-2.16-8.51-2.16-5.2 0-8.43 2.11-8.51 2.16-.24.13-.54.06-.68-.18-.14-.24-.06-.54.18-.68.17-.1 3.61-2.3 9.01-2.3 5.4 0 8.84 2.2 9.01 2.3.24.14.32.44.18.68-.09.16-.25.28-.49.28zm-3.04 14c-.11 0-.21-.03-.31-.1-.13-.08-2.61-1.63-5.51-1.63-2.89 0-5.38 1.55-5.51 1.63-.24.13-.55.06-.69-.17-.14-.24-.06-.54.17-.68.3-.19 3.01-1.78 6.03-1.78 3.02 0 5.73 1.59 6.03 1.78.24.14.32.44.18.68-.09.17-.26.27-.4.27zM12 22c-5.52 0-10-4.48-10-10S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8z"/>
+        </svg>
+        <p class="status-text">Scanning Identity...</p>
+    </div>
+
+    <div id="main-content">
+        <img src="YOUR_PHOTO_HERE.jpg" id="birthday-pic" class="main-img" alt="Happy Birthday">
+        
+        <h1>Happy Birthday, <span id="name">PRIYO!</span> ❤️</h1>
+        
+        <p id="wish-text"></p>
+        <p style="font-size: 28px; margin: 10px 0;">🎂✨🎁</p>
+        
+        <button onclick="location.reload()" style="background: #ff4d6d; color: white; border: none; padding: 8px 15px; border-radius: 10px; cursor: pointer; font-family: 'Poppins';">Scan Again</button>
+    </div>
+
+    <script>
+        function startProcess() {
+            // Hide button and show scanning
+            document.getElementById('click-btn').style.display = 'none';
+            document.getElementById('scan-area').style.display = 'block';
+
+            // Automatic unlock after 2.5 seconds
+            setTimeout(() => {
+                unlockSurprise();
+            }, 2500);
+        }
+
+        function unlockSurprise() {
+            // Hide scanning area
+            document.getElementById('scan-area').style.display = 'none';
+            
+            // Change background color to soft pink
+            document.body.style.backgroundColor = '#ffeff2';
+            
+            // Show main birthday card
+            const mainContent = document.getElementById('main-content');
+            mainContent.style.display = 'block';
+
+            // Start Floating Hearts
+            setInterval(createHeart, 300);
+
+            // Random Birthday Wishes
+            const wishes = [
+                "You make every day special! ❤️",
+                "Happy Birthday! May your smile never fade! 🌹",
+                "Wishing you the most magical birthday ever! 🥂",
+                "To the most wonderful person I know, Happy Birthday! 🎈",
+                "You are the best! Have a blast today! ✨",
+                "Sending you lots of love and hugs! ❤️"
+            ];
+            
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            document.getElementById('wish-text').innerText = randomWish;
+        }
+
+        // Function to generate floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart-bg');
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+            document.body.appendChild(heart);
+            
+            // Clean up hearts after animation ends
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
